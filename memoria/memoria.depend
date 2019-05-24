@@ -23,3 +23,25 @@
 	<stdlib.h>
 	"empleado.h"
 
+1558657039 source:/home/alumno/Documentos/Mobmauri33/clase17/memoria/empleado.c
+	<stdio.h>
+	<stdlib.h>
+	"empleado.h"
+	<string.h>
+	"utn_strings.h"
+
+1558656985 /home/alumno/Documentos/Mobmauri33/clase17/memoria/empleado.h
+
+1558648361 /home/alumno/Documentos/Mobmauri33/clase17/memoria/utn_strings.h
+
+1558657052 source:/home/alumno/Documentos/Mobmauri33/clase17/memoria/main.c
+	<stdio.h>
+	<stdlib.h>
+	"empleado.h"
+
+1558653841 source:/home/alumno/Documentos/Mobmauri33/clase17/memoria/utn_strings.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn_strings.h"
+

@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "empleado.h"
+#include <string.h>
+#include "utn_strings.h"
 
 Empleado* Emp_new(void)
 {
@@ -40,42 +42,21 @@ int Emp_getId(Empleado* this, int* resultado)
     return retorno;
 }
 
-int isNumberFloat (char* pStr)
-{
-    int i=0;
-    int contadorPuntos=0;
-    while(pStr[i]!='\0')
-    {
-        if((pStr[i]<'0' || pStr[i]>'9')&&(pStr[i]!='.'))
-        {
-            return 0;
-        }
-        if(pStr[i]=='.')
-        {
-            contadorPuntos++;
-            if(contadorPuntos>1)
-            {
-                return 0;
-            }
-        }
-        i++;
-    }
-    return 1;
-}
-
 int Emp_setPeso(Empleado* this, float peso)
 {
     int retorno = -1;
-    if(this != NULL && !isNumberFloat)
+    char bufferPeso[4098];
+    sprintf(bufferPeso,"%f",peso);
+    if(this != NULL && isNumberFloat(bufferPeso))
     {
-        this->peso = peso;
+        strcpy(this->peso,bufferPeso);
         retorno = 0;
     }
     return retorno;
 }
 
 
-int Emp_getPeso(Empleado* this, float* resultado)
+int Emp_getPeso(Empleado* this, char* resultado)
 {
     int retorno = -1;
     if(this != NULL && resultado != NULL)
@@ -89,9 +70,9 @@ int Emp_getPeso(Empleado* this, float* resultado)
 int Emp_setNombre(Empleado* this, char* nombre)
 {
     int retorno = -1;
-    if(this != NULL && nombre != NULL)
+    if(this != NULL && isLetter(nombre))
     {
-        *nombre = nombre;
+        strcpy(this->nombre,nombre);
         retorno = 0;
     }
     return retorno;
@@ -103,17 +84,63 @@ int Emp_getNombre(Empleado* this, char* resultado)
     int retorno = -1;
     if(this != NULL && resultado != NULL)
     {
-        *resultado = this->nombre;
+        strcpy(resultado,this->nombre);
+        /*resultado = this->nombre;*/
         retorno = 0;
     }
     return retorno;
 }
 
+int Emp_setApellido(Empleado* this, char* apellido)
+{
+    int retorno = -1;
+    if(this != NULL && isLetter(apellido))
+    {
+        strcpy(this->apellido,apellido);
+        retorno = 0;
+    }
+    return retorno;
+}
+
+int Emp_getApellido(Empleado* this, char* resultado)
+{
+    int retorno = -1;
+    if(this != NULL && resultado != NULL)
+    {
+        strcpy(resultado,this->apellido);
+        retorno = 0;
+    }
+    return retorno;
+}
+
+int Emp_setEdad(Empleado* this, int edad)
+{
+    int retorno = -1;
+    char bufferEdad[4098];
+    sprintf(bufferEdad,"%i",edad);
+    if(this != NULL && !isNumber(bufferEdad))
+    {
+        this->edad = edad;
+        retorno = 0;
+    }
+    return retorno;
+
+}
+int Emp_getEdad(Empleado* this, int* resultado)
+{
+    int retorno = -1;
+    if(this != NULL && resultado != NULL)
+    {
+        *resultado = this->edad;
+        retorno = 0;
+    }
+    return retorno;
+}
 
 int Emp_setEstado(Empleado* this, int estado)
 {
     int retorno = -1;
-    if(this != NULL && estado != NULL)
+    if(this != NULL && estado>=0)
     {
         this->estado = estado;
         retorno = 0;

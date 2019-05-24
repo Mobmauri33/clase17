@@ -4,11 +4,11 @@
 
 int main()
 {
-    Empleado *pArrayEmpleado[1000];
+    Empleado *pArrayEmpleado[3000];
     int ultimoElementoArrayEmpleado = 0;
     int indiceActual;
     int auxInt;
-    float auxFloat;
+    char auxFloat[2000];
 
     indiceActual = ultimoElementoArrayEmpleado;
     pArrayEmpleado[indiceActual] =  Emp_new();
@@ -24,10 +24,10 @@ int main()
             printf("\n El id es %d",auxInt);
 
         }
-        if(!Emp_setPeso(pArrayEmpleado[indiceActual],2.50))
+        if(!Emp_setPeso(pArrayEmpleado[indiceActual],2.5))
         {
-            Emp_getPeso(pArrayEmpleado[indiceActual], &auxFloat);
-            printf("\n El peso es %.2f")
+            Emp_getPeso(pArrayEmpleado[indiceActual],auxFloat);
+            printf("\n El peso es %f",auxFloat);
         }
 
     }
